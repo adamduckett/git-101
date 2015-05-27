@@ -1,4 +1,4 @@
-# GitHub Setup
+# Git 101
 
 A no bullshit guide to getting a project on GitHub.
 
