@@ -1,130 +1,167 @@
 # GitHub Setup
 
-A quick setup guide to get your project files up on GitHub as quickly as possible using the command line.
+A no bullshit guide to getting a project on GitHub.
 
-## Create a new repository
 
-Before you start, setup a new repository on GitHub.
+## Creating or cloning a repository
 
-##  Create your directory structure and files
+We need to either create a new repository or clone an existing one.
 
-1. Create a new folder for your project- this will be the location of your local depository.
 
-	```
-	$ mkdir ~/development/MoominsRule
-	```
+### Create a new repository
 
-2. Navigate to the newly created directory.
+Create a new directory, add some files and execute:
 
-	```
-	$ cd ~/MoominsRule
-	```
-
-3. Make your first commit.
-	
-	```
+```
 	$ git init
-	```
-	
-	```
-	Initialised empty Git repository in /Users/Adam/AwesomeWebsite/.git/
-	```
+```
 
-4. Create your initial files and directories.
-	
-	```
-	$ mdkir img
-	$ touch humans.txt Readme.txt
-	$ mkdir css; cd css; touch styles.css; cd ../
-	```
+to create a new git repository.
 
-## What do your Git eyes see?
 
-Before we commit it's best to see exactly which directories and files Git can see.
-	
-1. Check what files Git can see.
-	
-	```
+### Or, clone an existing repository
+
+To create a local copy of an existing GitHub repository:
+
+```
+	$ git clone [https://github.com/username/project.git]
+```
+
+This will create a working copy of the repository on your machine.
+
+
+## Checking Git's status
+
+It's now a good idea to see what Git files Git can see:
+
+```
 	$ git status
-	```
+```
 
-	```
-	On branch master
+Any 'untracked' files need to be added, we'll do that next.
 
-	Initial commit
 
-	Untracked files:
-		(use “git add <file>..” to include in what will be committed)
+## Adding changes
 
-			css/styles.css
-			humans.txt
-			img/
-			readme.txt
-	```
+Your files are currently untracked by Git; we'll make Git take notice of them with:
 
-2. Make Git take notice of untracked files by either adding multiple files or one-by-one.
-	
-	```
+```
+	$ git add <filename>
+```
+```
 	$ git add .
-	```
+```
 
-	or
+This will add your proposed changes to the **Index**.
 
-	```
-	$ git add readme.txt
-	```
 
-3. So you can upload an empty directory to GitHub, create a .gitkeep file in each empty directory.
+## Committing changes
 
-	```
-	$ gitkeep
-	```
+To actually commit your changes, use:
 
-	```
-	gitkeep is creating files…
-	created ./img/.gitkeep
-	finished. 1 files(s) created!
-	```
+```
+	$ git commit -m "Commit message"
+```
 
-4. Now we have our basic file structure, check what files Git can see before we commit.
+Your files are now committed to the **HEAD**, but are not in your remote repository yet.
 
-	```
-	$ git status
-	```
-	
-	You should receive a message that looks something like this:
-	
-	```
-	On branch master
 
-	Initial commit
+## Pushing changes
 
-	Changes to be committed:
-		(use “git rm —cached <file>…” to unstage)
+Finally, ypi need to push your changes from the **HEAD** of your local working copy and send them to your remote repository on GitHub.
 
-			new file: css/styles.css
-			new file: humans.txt
-			new file: img/.gitkeep
-			new file: js/.gitkeep
-			new file: readme.txt
-	```
 
-5. Now let’s actually make a change by committing our files and directories. 
-	
-	```
-	$ git commit -m “Setup basic file structure”
-	```
+### I din't clone no repo, honest!
 
-	Note: anything after “-m” will be read as a message and should be written in the present tense. It’s important to always write clear commit messages to make it easier for other people to follow along and provide feedback.
+If you didn't clone an existing repository earlier you first need to add the remote server you wish to push to before you can push your changes to the server:
 
-	```
-	[master (root-commit) 53fe028] Setup basic file structure
- 	8 files changed, 522 insertions(+)
- 	create mode 100644 css/styles.css
- 	create mode 100644 humans.txt
- 	create mode 100644 img/.gitkeep
- 	create mode 100644 js/.gitkeep
- 	create mode 100644 readme.txt
-	```
+```
+	$ git remote add origin [https://github.com/username/project.git]
+```
 
-6. It’s finally time to push our first commit up to GitHub.
+
+### I cloned the heck outta that repo!
+
+If you did clone an existing remote repository simply execute:
+
+```
+	$ git push origin master
+```
+
+Make sure _master_ is whatever branch you want to push your changes to. If you're riding solo on a project this will likely always be _master_.
+
+
+## Branching off
+
+Branches are handy for working on a project independently without affecting other developers' shit. You can then merge your changes back to the master branch when you're done.
+
+
+### Create (and switch to) a new branch
+
+To create a new branch called "awesome_feature" and swith to it, use:
+
+```
+	$ git checkout -b awesome_feature
+```
+
+### Switch back to master
+
+You can switch back to the master branch with:
+
+```
+	$ git checkout master
+```
+
+### Deleting a branch
+
+To delete the "awesome_feature" branch:
+
+```
+	$ git branch -d awesome_feature
+```
+
+### Make your branch available to other developers
+
+Your branch is only of use to you unless you push it to your remote repository. Push your "awesome_feature" branch with:
+
+```
+	$ git push origin awesome_feature
+```
+
+
+## Updating & merging
+
+To update your local repository to the most recent commit you can use:
+
+```
+	$ git pull
+```
+
+This will fetch and merge remote changes to your working directory. Handy, huh?
+
+
+### Merging branches
+
+You can also merge your "awesome_feature" branch into your active branch (e.g. master) with:
+
+```
+	$ git merge awesome_feature
+```
+
+### Dealing with conflicts
+
+Sometimes Git isn't able to automatically merge your changes. If this happens you are responsible for merging any _conflicts_ yourself manually by editing the files Git flags up.
+
+After making your changes, you need to mark them as merged with:
+
+```
+	$ git add <filename>
+```
+
+### Previewing changes before merging
+
+If you would like to preview your changes before merging use:
+
+```
+	$ git diff <source_branch> <target_branch>
+```
