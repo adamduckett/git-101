@@ -3,7 +3,7 @@
 A no bullshit guide to getting a project on GitHub.
 
 
-## Creating or cloning a repository
+## #1 Creating or cloning a repository
 
 We need to either create a new repository or clone an existing one.
 
@@ -30,7 +30,7 @@ To create a local copy of an existing GitHub repository:
 This will create a working copy of the repository on your machine.
 
 
-## Checking Git's status
+## #2 Checking Git's status
 
 It's now a good idea to see what Git files Git can see:
 
@@ -41,7 +41,7 @@ It's now a good idea to see what Git files Git can see:
 Any 'untracked' files need to be added, we'll do that next.
 
 
-## Adding changes
+## #3 Adding changes
 
 Your files are currently untracked by Git; we'll make Git take notice of them with:
 
@@ -55,7 +55,7 @@ Your files are currently untracked by Git; we'll make Git take notice of them wi
 This will add your proposed changes to the **Index**.
 
 
-## Committing changes
+## #4 Committing changes
 
 To actually commit your changes, use:
 
@@ -66,7 +66,7 @@ To actually commit your changes, use:
 Your files are now committed to the **HEAD**, but are not in your remote repository yet.
 
 
-## Pushing changes
+## #5 Pushing changes
 
 Finally, ypi need to push your changes from the **HEAD** of your local working copy and send them to your remote repository on GitHub.
 
@@ -91,7 +91,7 @@ If you did clone an existing remote repository simply execute:
 Make sure _master_ is whatever branch you want to push your changes to. If you're riding solo on a project this will likely always be _master_.
 
 
-## Branching off
+## #6 Branching off
 
 Branches are handy for working on a project independently without affecting other developers' shit. You can then merge your changes back to the master branch when you're done.
 
@@ -129,7 +129,7 @@ Your branch is only of use to you unless you push it to your remote repository. 
 ```
 
 
-## Updating & merging
+## #7 Updating & merging
 
 To update your local repository to the most recent commit you can use:
 
