@@ -165,3 +165,15 @@ If you would like to preview your changes before merging use:
 ```
 	$ git diff <source_branch> <target_branch>
 ```
+
+## #8 Renaming a repository
+
+When you rename a depository, all existing information is automatically redirected to the new name (e.g. _Issues_, _Wikis_, _Stars_ and _Followers_).
+
+All web traffic will be redirected and all `git clone`, `git fetch`, or `git push` operations targeting the previous location will continue to funtion.
+
+However, it's recommended to update any existing local clones to point to the new repository URL with:
+
+```
+  $ git remote set-url origin <new_url>
+```
