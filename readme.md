@@ -168,7 +168,7 @@ If you would like to preview your changes before merging use:
 
 ## #8 Renaming a repository
 
-When you rename a depository, all existing information is automatically redirected to the new name (e.g. _Issues_, _Wikis_, _Stars_ and _Followers_).
+When you rename a repository, all existing information is automatically redirected to the new name (e.g. _Issues_, _Wikis_, _Stars_ and _Followers_).
 
 All web traffic will be redirected and all `git clone`, `git fetch`, or `git push` operations targeting the previous location will continue to funtion.
 
